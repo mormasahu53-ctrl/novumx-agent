@@ -296,15 +296,18 @@ app.post('/api/reinvest', async (req, res) => {
 // ==========================================
 // Telegram Bot Handler
 // ==========================================
+
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `أهلاً بك في منصة NovumX Agent 🚀`, {
     reply_markup: {
       inline_keyboard: [[
-        { text: "فتح تطبيق NovumX Agent 📈", web_app: { url: "https://your-netlify-domain.netlify.app" } }
+        { text: "فتح تطبيق NovumX Agent 📈", web_app: { url: "https://sunny-paletas-5cd956.netlify.app" } }
       ]]
     }
   });
 });
+
+  
 
 // ==========================================
 // Keep-Alive Mechanism (Render Fix)
