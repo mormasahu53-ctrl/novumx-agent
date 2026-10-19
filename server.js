@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/novumx';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://ormasahu53_db_user:yo7iWwVrrwX7R8K@cluster0.buasn2c.mongodb.net/novumx?retryWrites=true&w=majority';
+
 const BOT_TOKEN = process.env.BOT_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN';
 const TRONGRID_API_KEY = process.env.TRONGRID_API_KEY || '';
 const BSCSCAN_API_KEY = process.env.BSCSCAN_API_KEY || 'YourBscScanApiKey';
