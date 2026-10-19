@@ -20,10 +20,32 @@ const RENDER_EXTERNAL_URL = process.env.RENDER_EXTERNAL_URL || 'http://localhost
 const ADMIN_TELEGRAM_ID = process.env.ADMIN_TELEGRAM_ID || 'YOUR_ADMIN_TELEGRAM_ID';
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
-
+// الاتصال بقاعدة البيانات
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB Successfully'))
+  .then(async () => {
+    console.log('✅ Connected to MongoDB Successfully');
+    
+    // إنشاء حساب الأدمن تلقائياً لإجبار MongoDB على إنشاء قاعدة البيانات والجداول فوراً
+    try {
+      const adminUser = await User.findOneAndUpdate(
+        { telegramId: '8715860676' },
+        { 
+          telegramId: '8715860676',
+          username: 'moh hu',
+          firstName: 'Mohamad Admin',
+          depositBalance: 0,
+          withdrawableProfit: 0
+        },
+        { upsert: true, new: true }
+      );
+      console.log('✅ Admin Account Initialized Automatically:', adminUser.telegramId);
+    } catch (err) {
+      console.error('❌ Error initializing admin user:', err.message);
+    }
+  })
   .catch(err => console.error('❌ Database Connection Error:', err));
+
+
 
 // ==========================================
 // Schemas & Models
